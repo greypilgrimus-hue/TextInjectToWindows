@@ -1,3 +1,30 @@
+{*
+  MIT License
+  Copyright (c) 2024 TextInjectToWindows contributors
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+  DISCLAIMER: This software is provided for informational and experimental
+  purposes only. Use it at your own risk and ensure compliance with applicable
+  laws and policies.
+*}
+
 unit UnitMain;
 
 interface
@@ -17,77 +44,77 @@ uses
 
 type
   TFormMain = class(TForm)
-    Panel1: TPanel;
-    Button2: TButton;
-    Button1: TButton;
-    ComboBox1: TComboBox;
-    Label1: TLabel;
-    BtnWin: TButton;
-    Button3: TButton;
-    Label3: TLabel;
-    Label4: TLabel;
-    Timer1: TTimer;
-    LabelTime: TLabel;
-    PgCtrl: TPageControl;
-    TbSht_TextToRDP: TTabSheet;
-    TbSht_test: TTabSheet;
-    TbSht_Settings: TTabSheet;
-    Memo1: TMemo;
-    edtText: TEdit;
-    lblText: TLabel;
-    btnSendText: TButton;
-    btnClick: TButton;
-    lblX: TLabel;
-    lblY: TLabel;
-    Label2: TLabel;
-    ComboBox2: TComboBox;
-    DTP_start_time: TDateTimePicker;
-    DTP_stop_date: TDateTimePicker;
-    DTP_stop_time: TDateTimePicker;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    LblDTStart: TLabel;
-    LblDTEnd: TLabel;
-    Label5: TLabel;
-    edtX: TEdit;
-    Label6: TLabel;
-    edtY: TEdit;
-    Button5: TButton;
-    Label_HWIND: TLabel;
-    Label13: TLabel;
-    DTP_start_date: TDateTimePicker;
-    Btn_Now: TButton;
-    ChBxTimeNowControl: TCheckBox;
-    ChBxNowStart: TCheckBox;
-    CheckBox1: TCheckBox;
-    CmBx_RND_dev: TComboBox;
-    Label10: TLabel;
-    Memo2: TMemo;
-    ChBx_period: TCheckBox;
-    EdtUserName: TEdit;
-    EdtUserPass: TEdit;
-    BtnEnterUserName: TButton;
-    BtnEnterUserPass: TButton;
-    LabeMessage: TLabel;
-    MemoLog: TMemo;
-    procedure btnSendTextClick(Sender: TObject);
-    procedure btnClickClick(Sender: TObject);
+    pnlControlPanel: TPanel;
+    btnStartTextLoop: TButton;
+    btnActivateWindow: TButton;
+    cmbWindowList: TComboBox;
+    lblWindowList: TLabel;
+    btnRefreshWindowList: TButton;
+    btnStopTextLoop: TButton;
+    lblLoopPrompt: TLabel;
+    lblLoopStatus: TLabel;
+    tmrStatus: TTimer;
+    lblCurrentTime: TLabel;
+    pgControl: TPageControl;
+    tabTextToRDP: TTabSheet;
+    tabTest: TTabSheet;
+    tabSettings: TTabSheet;
+    memoTextSource: TMemo;
+    edtTextToSend: TEdit;
+    lblTextPrompt: TLabel;
+    btnSendRdpText: TButton;
+    btnSendMouseClick: TButton;
+    lblTextTabX: TLabel;
+    lblTextTabY: TLabel;
+    lblDurationHint: TLabel;
+    cmbDurationHours: TComboBox;
+    dtpStartTime: TDateTimePicker;
+    dtpStopDate: TDateTimePicker;
+    dtpStopTime: TDateTimePicker;
+    lblPeriodHeader: TLabel;
+    lblStartHeader: TLabel;
+    lblEndHeader: TLabel;
+    lblStartValue: TLabel;
+    lblEndValue: TLabel;
+    lblTargetX: TLabel;
+    edtClickX: TEdit;
+    lblTargetY: TLabel;
+    edtClickY: TEdit;
+    btnCaptureCoordinates: TButton;
+    lblWindowHandle: TLabel;
+    lblWindowHandleTitle: TLabel;
+    dtpStartDate: TDateTimePicker;
+    btnSetNow: TButton;
+    chkValidateTimes: TCheckBox;
+    chkStartImmediately: TCheckBox;
+    chkRandomizeClicks: TCheckBox;
+    cmbRandomDeviation: TComboBox;
+    lblRandomDeviationInfo: TLabel;
+    memoInstructions: TMemo;
+    chkUsePeriod: TCheckBox;
+    edtUserName: TEdit;
+    edtUserPassword: TEdit;
+    btnEnterUserName: TButton;
+    btnEnterUserPassword: TButton;
+    lblStatusMessage: TLabel;
+    memoLog: TMemo;
+    procedure btnSendRdpTextClick(Sender: TObject);
+    procedure btnSendMouseClickClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure BtnWinClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure btnRefreshWindowListClick(Sender: TObject);
+    procedure btnActivateWindowClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-    procedure Timer1Timer(Sender: TObject);
-    procedure ComboBox1Change(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
-    procedure DTP_start_dateChange(Sender: TObject);
-    procedure DTP_stop_dateChange(Sender: TObject);
-    procedure Btn_NowClick(Sender: TObject);
-    procedure CmBx_RND_devChange(Sender: TObject);
-    procedure BtnEnterUserNameClick(Sender: TObject);
-    procedure BtnEnterUserPassClick(Sender: TObject);
+    procedure btnStartTextLoopClick(Sender: TObject);
+    procedure btnStopTextLoopClick(Sender: TObject);
+    procedure tmrStatusTimer(Sender: TObject);
+    procedure cmbWindowListChange(Sender: TObject);
+    procedure btnCaptureCoordinatesClick(Sender: TObject);
+    procedure dtpStartDateChange(Sender: TObject);
+    procedure dtpStopDateChange(Sender: TObject);
+    procedure btnSetNowClick(Sender: TObject);
+    procedure cmbRandomDeviationChange(Sender: TObject);
+    procedure btnEnterUserNameClick(Sender: TObject);
+    procedure btnEnterUserPasswordClick(Sender: TObject);
   private
     procedure SendText(const S: string);
     procedure ClickAtScreen(X, Y: Integer);
@@ -115,23 +142,23 @@ var
   i:integer;
 begin
   Caption := 'RDP input demo';
-  lblText.Caption := 'Текст:';
-  lblX.Caption := 'X:';
-  lblY.Caption := 'Y:';
-  edtText.Text := 'test 123';
-  edtX.Text := '500';
-  edtY.Text := '300';
-  MemoLog.Lines.Add('Старт работы  ' + DateTimeToStr(now));
+  lblTextPrompt.Caption := ':';
+  lblTextTabX.Caption := 'X:';
+  lblTextTabY.Caption := 'Y:';
+  edtTextToSend.Text := 'test 123';
+  edtClickX.Text := '500';
+  edtClickY.Text := '300';
+  memoLog.Lines.Add('   ' + DateTimeToStr(now));
 end;
 
 procedure TFormMain.FormShow(Sender: TObject);
 begin
-  BtnWinClick(sender);
-  ComboBox1.ItemIndex:=0;
-  ComboBox2.ItemIndex:=0;
+  btnRefreshWindowListClick(sender);
+  cmbWindowList.ItemIndex:=0;
+  cmbDurationHours.ItemIndex:=0;
 end;
 
-procedure TFormMain.SendText(const S: string);   // только для латиницы/цифр
+procedure TFormMain.SendText(const S: string);   // ГІГ®Г«ГјГЄГ® Г¤Г«Гї Г«Г ГІГЁГ­ГЁГ¶Г»/Г¶ГЁГґГ°
 var
   Inputs: array of TInput;
   i, idx: Integer;
@@ -143,7 +170,7 @@ begin
   if Stop then exit;
 
 
-  SetLength(Inputs, Length(S) * 4); // запас (keydown/keyup + shift)
+  SetLength(Inputs, Length(S) * 4); // Г§Г ГЇГ Г± (keydown/keyup + shift)
 
   idx := 0;
 
@@ -151,12 +178,12 @@ begin
     shiftState := VkKeyScan(S[i]);
     sleep (50+Round(random(RND_deviation)*10));
     if shiftState = -1 then
-      Continue; // символ не мапится — пропускаем (нужно доработать)
+      Continue; // Г±ГЁГ¬ГўГ®Г« Г­ГҐ Г¬Г ГЇГЁГІГ±Гї вЂ” ГЇГ°Г®ГЇГіГ±ГЄГ ГҐГ¬ (Г­ГіГ¦Г­Г® Г¤Г®Г°Г ГЎГ®ГІГ ГІГј)
 
       vk := Word(shiftState and $FF);
     needShift := (shiftState and $0100) <> 0;
 
-    // Нажимаем Shift, если надо
+    // ГЌГ Г¦ГЁГ¬Г ГҐГ¬ Shift, ГҐГ±Г«ГЁ Г­Г Г¤Г®
     if needShift then
     begin
       ZeroMemory(@Inputs[idx], SizeOf(TInput));
@@ -167,102 +194,102 @@ begin
       sleep (10+round(random(RND_deviation)*10));
     end;
 
-    // Нажатие клавиши
+    // ГЌГ Г¦Г ГІГЁГҐ ГЄГ«Г ГўГЁГёГЁ
     ZeroMemory(@Inputs[idx], SizeOf(TInput));
     Inputs[idx].Itype := INPUT_KEYBOARD;
     Inputs[idx].ki.wVk := vk;
     Inputs[idx].ki.dwFlags := 0;
     Inc(idx);
     sleep (10+Round(random(RND_deviation)*10));
-    // Отпускание клавиши
-    ZeroMemory(@Inputs[idx], SizeOf(TInput));
-    Inputs[idx].Itype := INPUT_KEYBOARD;
-    Inputs[idx].ki.wVk := vk;
-    Inputs[idx].ki.dwFlags := KEYEVENTF_KEYUP;
-    Inc(idx);
-    sleep (10+Round(random(RND_deviation)*10));
-    // Отпускаем Shift, если нажимали
-    if needShift then
-    begin
-      ZeroMemory(@Inputs[idx], SizeOf(TInput));
-      Inputs[idx].Itype := INPUT_KEYBOARD;
-      Inputs[idx].ki.wVk := VK_SHIFT;
-      Inputs[idx].ki.dwFlags := KEYEVENTF_KEYUP;
-      Inc(idx);
-      sleep (20+Round(random(RND_deviation)*10));
-    end;
-  end;
-  sleep (30+Round(random(RND_deviation+1)*10));
-  if idx > 0 then
-    SendInput(idx, Inputs[0], SizeOf(TInput));
-end;
+procedure TFormMain.tmrStatusTimer(Sender: TObject);
+  lblCurrentTime.Caption:=TimeToStr(now);
+  if stop then lblLoopStatus.Caption:='!' else lblLoopStatus.Caption:='__'
+procedure TFormMain.cmbWindowListChange(Sender: TObject);
+  ActivateWindowByHWIND (HWND(cmbWindowList.Items.Objects[cmbWindowList.ItemIndex]));
+  lblWindowHandle.Caption:=IntToStr((HWND(cmbWindowList.Items.Objects[cmbWindowList.ItemIndex])));
+procedure TFormMain.cmbRandomDeviationChange(Sender: TObject);
+    RND_deviation:=StrToInt (cmbRandomDeviation.Text);
+    cmbRandomDeviation.ItemIndex:=0;
+procedure TFormMain.dtpStartDateChange(Sender: TObject);
+  if chkValidateTimes.Checked then
+  dtpStartDate.DateTime := DTP.DateTime;
+  dtpStartTime.DateTime := DTP.DateTime;
+  if chkUsePeriod.Checked then begin
+    dtpStopDate.DateTime := DTP.DateTime+1/24*StrToInt(cmbDurationHours.Text);
+    dtpStopTime.DateTime := DTP.DateTime+1/24*StrToInt(cmbDurationHours.Text);
+  dtStart:= dtpStartDate.DateTime;
+  dtEnd:= dtpStopTime.DateTime;
+  lblStartValue.Caption:=DateTimeToStr(dtStart);
+  lblEndValue.Caption:=DateTimeToStr(dtEnd);
+procedure TFormMain.dtpStopDateChange(Sender: TObject);
+  if chkValidateTimes.Checked then
 
-procedure TFormMain.Timer1Timer(Sender: TObject);
+  if chkUsePeriod.Checked then
+    if (DTP.DateTime-1/24*StrToInt(cmbDurationHours.Text))<now then exit;
+  dtpStopDate.DateTime := DTP.DateTime;
+  dtpStopDate.DateTime := DTP.DateTime;
+  if chkUsePeriod.Checked then begin
+    dtpStartTime.DateTime := DTP.DateTime-1/24*StrToInt(cmbDurationHours.Text);
+    dtpStartTime.DateTime := DTP.DateTime-1/24*StrToInt(cmbDurationHours.Text);
+  dtStart:= dtpStartDate.DateTime;
+  dtEnd:= dtpStopTime.DateTime;
+  lblStartValue.Caption:=DateTimeToStr(dtStart);
+  lblEndValue.Caption:=DateTimeToStr(dtEnd);
+procedure TFormMain.btnEnterUserNameClick(Sender: TObject);
+  X := StrToIntDef(edtClickX.Text, 0);
+  Y := StrToIntDef(edtClickY.Text, 0);
+  Text := edtUserName.Text;
+  memoLog.Lines.Add('  ' + DateTimeToStr(now));
+procedure TFormMain.btnEnterUserPasswordClick(Sender: TObject);
 begin
-  LabelTime.Caption:=TimeToStr(now);
-  if stop then Label4.Caption:='НЕТ!' else Label4.Caption:='_да_'
-end;
-
-procedure TFormMain.ClickAtScreen(X, Y: Integer);
+  X := StrToIntDef(edtClickX.Text, 0);
+  Y := StrToIntDef(edtClickY.Text, 0);
+  Text := edtUserPassword.Text;
+  memoLog.Lines.Add('  ' + DateTimeToStr(now));
+procedure TFormMain.btnSendRdpTextClick(Sender: TObject);
 begin
-  // Перемещаем курсор в абсолютные экранные координаты - правильно работает только для одномониторной конфигурации. Для многомониторной - совеобразно )))
-  SetCursorPos(X, Y);
-
-  // Нажатие ЛКМ
-  mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-  mouse_event(MOUSEEVENTF_LEFTUP,   0, 0, 0, 0);
-end;
-
-procedure TFormMain.ComboBox1Change(Sender: TObject);
-begin
-  ActivateWindowByHWIND (HWND(ComboBox1.Items.Objects[ComboBox1.ItemIndex]));
-  Label_HWIND.Caption:=IntToStr((HWND(ComboBox1.Items.Objects[ComboBox1.ItemIndex])));
-end;
-
-procedure TFormMain.CmBx_RND_devChange(Sender: TObject);
-begin
-  try
-    RND_deviation:=StrToInt (CmBx_RND_dev.Text);
-  except
-    CmBx_RND_dev.ItemIndex:=0;
-  end;
-end;
-
-procedure TFormMain.DTP_start_dateChange(Sender: TObject);
-Var
-  DTP:TDateTimePicker;
-begin
-  DTP:=Sender As TDateTimePicker;
-
-  if ChBxTimeNowControl.Checked then
-    if DTP.DateTime<now then begin
-      DTP.DateTime:=now;
-      exit;
-    end;
-
-  DTP_start_date.DateTime := DTP.DateTime;
-  DTP_start_time.DateTime := DTP.DateTime;
-  if ChBx_period.Checked then begin
-    DTP_stop_date.DateTime := DTP.DateTime+1/24*StrToInt(ComboBox2.Text);
-    DTP_stop_time.DateTime := DTP.DateTime+1/24*StrToInt(ComboBox2.Text);
-  end;
-  dtStart:= DTP_start_date.DateTime;
-  dtEnd:= DTP_stop_time.DateTime;
-  LblDTStart.Caption:=DateTimeToStr(dtStart);
-  LblDTEnd.Caption:=DateTimeToStr(dtEnd);
-end;
-
-procedure TFormMain.DTP_stop_dateChange(Sender: TObject);
-Var
-  DTP:TDateTimePicker;
-begin
-  DTP:=Sender As TDateTimePicker;
-  if ChBxTimeNowControl.Checked then
-    if DTP.DateTime<now then begin
-      DTP.DateTime:=now;
-      exit;
-    end;
-
+  SendText(edtTextToSend.Text);
+procedure TFormMain.btnRefreshWindowListClick(Sender: TObject);
+  FillVisibleWindowsCombo(cmbWindowList);
+  memoLog.Lines.Add('   ' + DateTimeToStr(now));
+procedure TFormMain.btnSetNowClick(Sender: TObject);
+  dtpStartDate.DateTime := now;
+  dtpStartTime.DateTime := now;
+  if chkUsePeriod.Checked then begin
+    dtpStopDate.DateTime := now+1/24*StrToInt(cmbDurationHours.Text);
+    dtpStopTime.DateTime := now+1/24*StrToInt(cmbDurationHours.Text);
+procedure TFormMain.btnActivateWindowClick(Sender: TObject);
+  if not ActivateWindowByTitlePart(cmbWindowList.Text) then
+    ShowMessage(' "'+cmbWindowList.Text+'"  ');
+  memoLog.Lines.Add('  "'+cmbWindowList.Text+'"    ' + DateTimeToStr(now));
+procedure TFormMain.btnStartTextLoopClick(Sender: TObject);
+  memoLog.Lines.Add('     ' + DateTimeToStr(now));
+  if chkUsePeriod.Checked then begin
+    _EndDT:= dt+1/24*StrToInt(cmbDurationHours.Text);
+  X := StrToIntDef(edtClickX.Text, 0);
+  Y := StrToIntDef(edtClickY.Text, 0);
+  memoLog.Lines.Add('      ' + DateTimeToStr(_StartDT));
+  memoLog.Lines.Add('      ' + DateTimeToStr(_EndDT));
+  if stop then lblLoopStatus.Caption:='!' else lblLoopStatus.Caption:='__';
+    lblStatusMessage.Caption:= '  .  ' + IntToStr(SecondsBetween (_StartDT, now))+' ,.';
+    lblCurrentTime.Caption:= DateTimeToStr(now);
+      lblCurrentTime.Caption:='';
+      lblStatusMessage.Caption:='';
+  lblCurrentTime.Caption:='';
+  lblStatusMessage.Caption:='';
+    ProcessMemoWithCallback(memoTextSource, ProcessEachChar);
+        ActivateWindowByTitlePart(cmbWindowList.Text);
+    memoLog.Lines.Add('     '+IntToStr(i)+'   :' + DateTimeToStr(_StartDT));
+procedure TFormMain.btnStopTextLoopClick(Sender: TObject);
+  if stop then lblLoopStatus.Caption:='!' else lblLoopStatus.Caption:='__';
+  memoLog.Lines.Add('   ' + DateTimeToStr(now));
+procedure TFormMain.btnCaptureCoordinatesClick(Sender: TObject);
+  edtClickX.Text := IntToStr(X);
+  edtClickY.Text:= IntToStr(Y);
+  memoLog.Lines.Add('    '+edtClickX.Text+'/'+ edtClickY.Text + '   ' + DateTimeToStr(now));
+procedure TFormMain.btnSendMouseClickClick(Sender: TObject);
+  X := StrToIntDef(edtClickX.Text, 0);
+  Y := StrToIntDef(edtClickY.Text, 0);
   if ChBx_period.Checked then
     if (DTP.DateTime-1/24*StrToInt(ComboBox2.Text))<now then exit;
 
@@ -292,7 +319,7 @@ begin
     ProcessEachChar(Text[i]);
     sleep (10);
   end;
-  MemoLog.Lines.Add('отправлен логин ' + DateTimeToStr(now));
+  MemoLog.Lines.Add('Г®ГІГЇГ°Г ГўГ«ГҐГ­ Г«Г®ГЈГЁГ­ ' + DateTimeToStr(now));
 end;
 
 procedure TFormMain.BtnEnterUserPassClick(Sender: TObject);
@@ -309,7 +336,7 @@ begin
     ProcessEachChar(Text[i]);
     sleep (10);
   end;
-  MemoLog.Lines.Add('отправлен пароль ' + DateTimeToStr(now));
+  MemoLog.Lines.Add('Г®ГІГЇГ°Г ГўГ«ГҐГ­ ГЇГ Г°Г®Г«Гј ' + DateTimeToStr(now));
 end;
 
 procedure TFormMain.btnSendTextClick(Sender: TObject);
@@ -320,7 +347,7 @@ end;
 procedure TFormMain.BtnWinClick(Sender: TObject);
 begin
   FillVisibleWindowsCombo(ComboBox1);
-  MemoLog.Lines.Add('скан окон  ' + DateTimeToStr(now));
+  MemoLog.Lines.Add('Г±ГЄГ Г­ Г®ГЄГ®Г­  ' + DateTimeToStr(now));
 end;
 
 procedure TFormMain.Btn_NowClick(Sender: TObject);
@@ -336,8 +363,8 @@ end;
 procedure TFormMain.Button1Click(Sender: TObject);
 begin
   if not ActivateWindowByTitlePart(ComboBox1.Text) then
-    ShowMessage('Окно "'+ComboBox1.Text+'" не найдено');
-  MemoLog.Lines.Add('вывод окна "'+ComboBox1.Text+'" в топ  ' + DateTimeToStr(now));
+    ShowMessage('ГЋГЄГ­Г® "'+ComboBox1.Text+'" Г­ГҐ Г­Г Г©Г¤ГҐГ­Г®');
+  MemoLog.Lines.Add('ГўГ»ГўГ®Г¤ Г®ГЄГ­Г  "'+ComboBox1.Text+'" Гў ГІГ®ГЇ  ' + DateTimeToStr(now));
 end;
 
 procedure TFormMain.ProcessEachChar(Ch: Char);
@@ -352,14 +379,14 @@ var
   delta_dt, _StartDT, _EndDT: TDateTime;
 begin
   i:=0;
-  MemoLog.Lines.Add('запущен цикл печати текста  ' + DateTimeToStr(now));
+  MemoLog.Lines.Add('Г§Г ГЇГіГ№ГҐГ­ Г¶ГЁГЄГ« ГЇГҐГ·Г ГІГЁ ГІГҐГЄГ±ГІГ   ' + DateTimeToStr(now));
   dt:=now;
   if ChBx_period.Checked then begin
     _StartDT:=now;
     _EndDT:= dt+1/24*StrToInt(ComboBox2.Text);
   end else begin
     if (dtEnd<=dtStart) or (dtEnd<=now) then begin
-      ShowMessage('Неверно заданы диапазоны времени (выбран режим работы от даты/времени до даты/времени!');
+      ShowMessage('ГЌГҐГўГҐГ°Г­Г® Г§Г Г¤Г Г­Г» Г¤ГЁГ ГЇГ Г§Г®Г­Г» ГўГ°ГҐГ¬ГҐГ­ГЁ (ГўГ»ГЎГ°Г Г­ Г°ГҐГ¦ГЁГ¬ Г°Г ГЎГ®ГІГ» Г®ГІ Г¤Г ГІГ»/ГўГ°ГҐГ¬ГҐГ­ГЁ Г¤Г® Г¤Г ГІГ»/ГўГ°ГҐГ¬ГҐГ­ГЁ!');
       exit;
     end;
     _StartDT:=dtStart;
@@ -367,14 +394,14 @@ begin
   end;
   X := StrToIntDef(edtX.Text, 0);
   Y := StrToIntDef(edtY.Text, 0);
-  MemoLog.Lines.Add('время когда печать должна начаться  ' + DateTimeToStr(_StartDT));
-  MemoLog.Lines.Add('время когда печать должна остановиться  ' + DateTimeToStr(_EndDT));
+  MemoLog.Lines.Add('ГўГ°ГҐГ¬Гї ГЄГ®ГЈГ¤Г  ГЇГҐГ·Г ГІГј Г¤Г®Г«Г¦Г­Г  Г­Г Г·Г ГІГјГ±Гї  ' + DateTimeToStr(_StartDT));
+  MemoLog.Lines.Add('ГўГ°ГҐГ¬Гї ГЄГ®ГЈГ¤Г  ГЇГҐГ·Г ГІГј Г¤Г®Г«Г¦Г­Г  Г®Г±ГІГ Г­Г®ГўГЁГІГјГ±Гї  ' + DateTimeToStr(_EndDT));
   ClickAtScreen(X, Y);
   Stop:=false;
-  if stop then Label4.Caption:='НЕТ!' else Label4.Caption:='_да_';
+  if stop then Label4.Caption:='ГЌГ…Г’!' else Label4.Caption:='_Г¤Г _';
   while now<=_StartDT do begin
     sleep (233);
-    LabeMessage.Caption:= 'Ожидание старта цикла. Ждем ' + IntToStr(SecondsBetween (_StartDT, now))+' ,сек.';
+    LabeMessage.Caption:= 'ГЋГ¦ГЁГ¤Г Г­ГЁГҐ Г±ГІГ Г°ГІГ  Г¶ГЁГЄГ«Г . Г†Г¤ГҐГ¬ ' + IntToStr(SecondsBetween (_StartDT, now))+' ,Г±ГҐГЄ.';
     LabelTime.Caption:= DateTimeToStr(now);
     application.ProcessMessages;
     if Stop then begin
@@ -397,7 +424,7 @@ begin
       ClickAtScreen(X, Y);
       sleep (300);
       for i := 0 to 10 do begin
-        SendText ('sVVV___ра'+IntToStr(i)+'  ');
+        SendText ('sVVV___Г°Г '+IntToStr(i)+'  ');
         sleep (500)  ;
       end;
       ZeroMemory(@Inp, SizeOf(Inp));
@@ -414,7 +441,7 @@ begin
       end;
 }
     sleep (1200+Round(random(RND_deviation)*100))  ;
-    MemoLog.Lines.Add('завершен проход текста №  '+IntToStr(i)+'   :' + DateTimeToStr(_StartDT));
+    MemoLog.Lines.Add('Г§Г ГўГҐГ°ГёГҐГ­ ГЇГ°Г®ГµГ®Г¤ ГІГҐГЄГ±ГІГ  В№  '+IntToStr(i)+'   :' + DateTimeToStr(_StartDT));
     application.ProcessMessages;
     if Stop then exit;
   end;
@@ -423,8 +450,8 @@ end;
 procedure TFormMain.Button3Click(Sender: TObject);
 begin
   Stop:=true;
-  if stop then Label4.Caption:='НЕТ!' else Label4.Caption:='_да_';
-  MemoLog.Lines.Add('останов цикла вывода ' + DateTimeToStr(now));
+  if stop then Label4.Caption:='ГЌГ…Г’!' else Label4.Caption:='_Г¤Г _';
+  MemoLog.Lines.Add('Г®Г±ГІГ Г­Г®Гў Г¶ГЁГЄГ«Г  ГўГ»ГўГ®Г¤Г  ' + DateTimeToStr(now));
 end;
 
 procedure TFormMain.Button4Click(Sender: TObject);
@@ -435,7 +462,7 @@ begin
 
   EdtX.Text := IntToStr(X);
   EdtY.Text:= IntToStr(Y);
-  MemoLog.Lines.Add('определены координаты точки ввода '+EdtX.Text+'/'+ EdtY.Text + '   ' + DateTimeToStr(now));
+  MemoLog.Lines.Add('Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­Г» ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГІГ®Г·ГЄГЁ ГўГўГ®Г¤Г  '+EdtX.Text+'/'+ EdtY.Text + '   ' + DateTimeToStr(now));
 end;
 
 procedure TFormMain.btnClickClick(Sender: TObject);
@@ -448,7 +475,7 @@ begin
   Y := StrToIntDef(edtY.Text, 0);
   ClickAtScreen(X, Y);
   for i := 0 to 10 do begin
-    SendText ('sVVV___ра'+IntToStr(i)+'  ');
+    SendText ('sVVV___Г°Г '+IntToStr(i)+'  ');
     sleep (1000)  ;
   end;
   ZeroMemory(@Inp, SizeOf(Inp));

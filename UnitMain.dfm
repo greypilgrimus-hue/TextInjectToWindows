@@ -15,7 +15,7 @@ object FormMain: TFormMain
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
+  object pnlControlPanel: TPanel
     Left = 0
     Top = 0
     Width = 201
@@ -24,28 +24,28 @@ object FormMain: TFormMain
     TabOrder = 0
     ExplicitLeft = -2
     ExplicitTop = -1
-    object Label1: TLabel
+    object lblWindowList: TLabel
       Left = 48
       Top = 93
       Width = 104
       Height = 13
       Caption = #1089#1087#1080#1089#1086#1082' '#1086#1082#1086#1085' (ListBtn)'
     end
-    object Label3: TLabel
+    object lblLoopPrompt: TLabel
       Left = 10
       Top = 231
       Width = 80
       Height = 13
       Caption = #1094#1080#1082#1083' '#1088#1072#1073#1086#1090#1072#1077#1090'?'
     end
-    object Label4: TLabel
+    object lblLoopStatus: TLabel
       Left = 121
       Top = 231
       Width = 18
       Height = 13
       Caption = #1085#1077#1090
     end
-    object LabelTime: TLabel
+    object lblCurrentTime: TLabel
       Left = 1
       Top = 823
       Width = 199
@@ -53,26 +53,26 @@ object FormMain: TFormMain
       Align = alBottom
       Alignment = taCenter
       AutoSize = False
-      Caption = 'LabelTime'
+      Caption = 'lblCurrentTime'
       ExplicitLeft = 48
       ExplicitTop = 640
       ExplicitWidth = 31
     end
-    object Label5: TLabel
+    object lblTargetX: TLabel
       Left = 57
       Top = 293
       Width = 110
       Height = 13
       Caption = #1082#1086#1086#1088#1076#1080#1085#1072#1090#1099' X '#1101#1082#1088#1072#1085#1072
     end
-    object Label6: TLabel
+    object lblTargetY: TLabel
       Left = 57
       Top = 334
       Width = 110
       Height = 13
       Caption = #1082#1086#1086#1088#1076#1080#1085#1072#1090#1099' Y '#1101#1082#1088#1072#1085#1072
     end
-    object Label_HWIND: TLabel
+    object lblWindowHandle: TLabel
       Left = 104
       Top = 40
       Width = 24
@@ -85,14 +85,14 @@ object FormMain: TFormMain
       Font.Style = []
       ParentFont = False
     end
-    object Label13: TLabel
+    object lblWindowHandleTitle: TLabel
       Left = 48
       Top = 43
       Width = 35
       Height = 13
       Caption = 'HWIND'
     end
-    object LabeMessage: TLabel
+    object lblStatusMessage: TLabel
       Left = 1
       Top = 810
       Width = 199
@@ -100,30 +100,30 @@ object FormMain: TFormMain
       Align = alBottom
       Alignment = taCenter
       AutoSize = False
-      Caption = 'LabelTime'
+      Caption = 'lblCurrentTime'
       ExplicitLeft = 48
       ExplicitTop = 640
       ExplicitWidth = 31
     end
-    object Button2: TButton
+    object btnStartTextLoop: TButton
       Left = 10
       Top = 200
       Width = 185
       Height = 25
       Caption = #1057#1058#1040#1056#1058' '#1094#1080#1082#1083' '#1074#1074#1086#1076#1072
       TabOrder = 0
-      OnClick = Button2Click
+      OnClick = btnStartTextLoopClick
     end
-    object Button1: TButton
+    object btnActivateWindow: TButton
       Left = 47
       Top = 139
       Width = 120
       Height = 25
       Caption = #1086#1082#1085#1086' '#1074' '#1090#1086#1087
       TabOrder = 1
-      OnClick = Button1Click
+      OnClick = btnActivateWindowClick
     end
-    object ComboBox1: TComboBox
+    object cmbWindowList: TComboBox
       Left = 10
       Top = 112
       Width = 185
@@ -133,7 +133,7 @@ object FormMain: TFormMain
       ParentCtl3D = False
       TabOrder = 2
       Text = #1088#1072#1079
-      OnChange = ComboBox1Change
+      OnChange = cmbWindowListChange
       Items.Strings = (
         #1088#1072#1079
         #1076#1074#1072
@@ -143,25 +143,25 @@ object FormMain: TFormMain
         #1089#1077#1084#1100
         #1074#1086#1089#1077#1084#1100'!')
     end
-    object BtnWin: TButton
+    object btnRefreshWindowList: TButton
       Left = 48
       Top = 62
       Width = 120
       Height = 25
       Caption = #1089#1082#1072#1085' win.'#1086#1082#1086#1085
       TabOrder = 3
-      OnClick = BtnWinClick
+      OnClick = btnRefreshWindowListClick
     end
-    object Button3: TButton
+    object btnStopTextLoop: TButton
       Left = 10
       Top = 250
       Width = 185
       Height = 25
       Caption = #1057#1058#1054#1055'! '#1094#1080#1082#1083' '#1074#1074#1086#1076#1072
       TabOrder = 4
-      OnClick = Button3Click
+      OnClick = btnStopTextLoopClick
     end
-    object edtX: TEdit
+    object edtClickX: TEdit
       Left = 47
       Top = 312
       Width = 120
@@ -169,7 +169,7 @@ object FormMain: TFormMain
       TabOrder = 5
       Text = 'EdtX'
     end
-    object edtY: TEdit
+    object edtClickY: TEdit
       Left = 47
       Top = 353
       Width = 120
@@ -177,16 +177,16 @@ object FormMain: TFormMain
       TabOrder = 6
       Text = 'EdtY'
     end
-    object Button5: TButton
+    object btnCaptureCoordinates: TButton
       Left = 46
       Top = 380
       Width = 121
       Height = 25
       Caption = #1086#1087#1088'.'#1082#1086#1086#1088#1076#1080#1085#1072#1090' '#1082#1083#1080#1082#1072
       TabOrder = 7
-      OnClick = Button4Click
+      OnClick = btnCaptureCoordinatesClick
     end
-    object EdtUserName: TEdit
+    object edtUserName: TEdit
       Left = 10
       Top = 440
       Width = 177
@@ -194,7 +194,7 @@ object FormMain: TFormMain
       TabOrder = 8
       Text = 'sergey.balayan@metinvestholding.com'
     end
-    object EdtUserPass: TEdit
+    object edtUserPassword: TEdit
       Left = 10
       Top = 504
       Width = 177
@@ -202,56 +202,56 @@ object FormMain: TFormMain
       TabOrder = 9
       Text = 'QAZ123wsx@@@@'
     end
-    object BtnEnterUserName: TButton
+    object btnEnterUserName: TButton
       Left = 8
       Top = 467
       Width = 179
       Height = 25
       Caption = 'Enter User Name'
       TabOrder = 10
-      OnClick = BtnEnterUserNameClick
+      OnClick = btnEnterUserNameClick
     end
-    object BtnEnterUserPass: TButton
+    object btnEnterUserPassword: TButton
       Left = 10
       Top = 531
       Width = 177
       Height = 25
       Caption = 'Enter User Password'
       TabOrder = 11
-      OnClick = BtnEnterUserPassClick
+      OnClick = btnEnterUserPasswordClick
     end
   end
-  object PgCtrl: TPageControl
+  object pgControl: TPageControl
     Left = 201
     Top = 0
     Width = 875
     Height = 837
-    ActivePage = TbSht_Settings
+    ActivePage = tabSettings
     Align = alClient
     TabOrder = 1
     ExplicitLeft = 240
     ExplicitTop = 217
     ExplicitWidth = 289
     ExplicitHeight = 193
-    object TbSht_TextToRDP: TTabSheet
+    object tabTextToRDP: TTabSheet
       Caption = #1090#1077#1082#1089' '#1074' '#1086#1082#1085#1086' RDP'
       ExplicitWidth = 281
       ExplicitHeight = 165
-      object lblX: TLabel
+      object lblTextTabX: TLabel
         Left = 48
         Top = 412
         Width = 110
         Height = 13
         Caption = #1082#1086#1086#1088#1076#1080#1085#1072#1090#1099' X '#1101#1082#1088#1072#1085#1072
       end
-      object lblY: TLabel
+      object lblTextTabY: TLabel
         Left = 48
         Top = 453
         Width = 110
         Height = 13
         Caption = #1082#1086#1086#1088#1076#1080#1085#1072#1090#1099' Y '#1101#1082#1088#1072#1085#1072
       end
-      object Memo1: TMemo
+      object memoTextSource: TMemo
         Left = 0
         Top = 0
         Width = 867
@@ -848,45 +848,45 @@ object FormMain: TFormMain
         TabOrder = 0
       end
     end
-    object TbSht_test: TTabSheet
+    object tabTest: TTabSheet
       Caption = #1090#1077#1089#1090#1086#1074#1099#1077' '#1092#1091#1085#1082#1094#1080#1080
       ImageIndex = 1
       ExplicitLeft = 5
       ExplicitTop = 27
-      object lblText: TLabel
+      object lblTextPrompt: TLabel
         Left = 40
         Top = 43
         Width = 81
         Height = 13
         Caption = #1090#1077#1089#1090#1086#1074#1099#1081' '#1090#1077#1082#1089#1090
       end
-      object edtText: TEdit
+      object edtTextToSend: TEdit
         Left = 40
         Top = 62
         Width = 120
         Height = 21
         TabOrder = 0
-        Text = 'edtText'
+        Text = 'edtTextToSend'
       end
-      object btnSendText: TButton
+      object btnSendRdpText: TButton
         Left = 40
         Top = 89
         Width = 120
         Height = 25
         Caption = 'SendText (edit)'
         TabOrder = 1
-        OnClick = btnSendTextClick
+        OnClick = btnSendRdpTextClick
       end
-      object btnClick: TButton
+      object btnSendMouseClick: TButton
         Left = 40
         Top = 128
         Width = 120
         Height = 25
         Caption = 'SendClickMouse'
         TabOrder = 2
-        OnClick = btnClickClick
+        OnClick = btnSendMouseClickClick
       end
-      object MemoLog: TMemo
+      object memoLog: TMemo
         Left = 224
         Top = 0
         Width = 643
@@ -897,7 +897,7 @@ object FormMain: TFormMain
         TabOrder = 3
       end
     end
-    object TbSht_Settings: TTabSheet
+    object tabSettings: TTabSheet
       Margins.Left = 15
       Margins.Top = 15
       Margins.Right = 15
@@ -906,7 +906,7 @@ object FormMain: TFormMain
       ImageIndex = 2
       ExplicitLeft = 12
       ExplicitTop = 27
-      object Label2: TLabel
+      object lblDurationHint: TLabel
         Left = 82
         Top = 157
         Width = 166
@@ -919,7 +919,7 @@ object FormMain: TFormMain
         Font.Style = []
         ParentFont = False
       end
-      object Label7: TLabel
+      object lblPeriodHeader: TLabel
         Left = 83
         Top = 13
         Width = 128
@@ -932,7 +932,7 @@ object FormMain: TFormMain
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object Label8: TLabel
+      object lblStartHeader: TLabel
         Left = 10
         Top = 66
         Width = 60
@@ -945,7 +945,7 @@ object FormMain: TFormMain
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object Label9: TLabel
+      object lblEndHeader: TLabel
         Left = 10
         Top = 108
         Width = 51
@@ -958,7 +958,7 @@ object FormMain: TFormMain
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object LblDTStart: TLabel
+      object lblStartValue: TLabel
         Left = 10
         Top = 253
         Width = 111
@@ -971,7 +971,7 @@ object FormMain: TFormMain
         Font.Style = []
         ParentFont = False
       end
-      object LblDTEnd: TLabel
+      object lblEndValue: TLabel
         Left = 10
         Top = 286
         Width = 102
@@ -984,7 +984,7 @@ object FormMain: TFormMain
         Font.Style = []
         ParentFont = False
       end
-      object Label10: TLabel
+      object lblRandomDeviationInfo: TLabel
         Left = 82
         Top = 348
         Width = 504
@@ -999,7 +999,7 @@ object FormMain: TFormMain
         Font.Style = []
         ParentFont = False
       end
-      object ComboBox2: TComboBox
+      object cmbDurationHours: TComboBox
         Left = 84
         Top = 179
         Width = 102
@@ -1017,7 +1017,7 @@ object FormMain: TFormMain
           '7'
           '8')
       end
-      object DTP_start_time: TDateTimePicker
+      object dtpStartTime: TDateTimePicker
         Left = 199
         Top = 66
         Width = 102
@@ -1026,9 +1026,9 @@ object FormMain: TFormMain
         Time = 0.250000000000000000
         Kind = dtkTime
         TabOrder = 1
-        OnChange = DTP_start_dateChange
+        OnChange = dtpStartDateChange
       end
-      object DTP_stop_date: TDateTimePicker
+      object dtpStopDate: TDateTimePicker
         Left = 82
         Top = 106
         Width = 102
@@ -1036,9 +1036,9 @@ object FormMain: TFormMain
         Date = 46006.000000000000000000
         Time = 0.604166666664241300
         TabOrder = 2
-        OnChange = DTP_stop_dateChange
+        OnChange = dtpStopDateChange
       end
-      object DTP_stop_time: TDateTimePicker
+      object dtpStopTime: TDateTimePicker
         Left = 199
         Top = 106
         Width = 102
@@ -1047,9 +1047,9 @@ object FormMain: TFormMain
         Time = 0.604166666664241300
         Kind = dtkTime
         TabOrder = 3
-        OnChange = DTP_stop_dateChange
+        OnChange = dtpStopDateChange
       end
-      object DTP_start_date: TDateTimePicker
+      object dtpStartDate: TDateTimePicker
         Left = 82
         Top = 66
         Width = 102
@@ -1057,18 +1057,18 @@ object FormMain: TFormMain
         Date = 46006.000000000000000000
         Time = 0.250000000000000000
         TabOrder = 4
-        OnChange = DTP_start_dateChange
+        OnChange = dtpStartDateChange
       end
-      object Btn_Now: TButton
+      object btnSetNow: TButton
         Left = 320
         Top = 66
         Width = 75
         Height = 21
         Caption = #1090#1077#1082'.'#1074#1088#1077#1084#1103
         TabOrder = 5
-        OnClick = Btn_NowClick
+        OnClick = btnSetNowClick
       end
-      object ChBxTimeNowControl: TCheckBox
+      object chkValidateTimes: TCheckBox
         Left = 82
         Top = 38
         Width = 255
@@ -1078,7 +1078,7 @@ object FormMain: TFormMain
         State = cbChecked
         TabOrder = 6
       end
-      object ChBxNowStart: TCheckBox
+      object chkStartImmediately: TCheckBox
         Left = 84
         Top = 206
         Width = 311
@@ -1086,7 +1086,7 @@ object FormMain: TFormMain
         Caption = #1088#1072#1073#1086#1090#1072#1090#1100' '#1086#1090' '#1090#1077#1082#1091#1097#1077#1075#1086' '#1084#1086#1084#1077#1085#1090#1072'! ('#1074' '#1090#1077#1095#1077#1085#1080#1080' ... '#1095#1072#1089#1086#1074')'
         TabOrder = 7
       end
-      object CheckBox1: TCheckBox
+      object chkRandomizeClicks: TCheckBox
         Left = 84
         Top = 331
         Width = 253
@@ -1096,14 +1096,14 @@ object FormMain: TFormMain
         State = cbChecked
         TabOrder = 8
       end
-      object CmBx_RND_dev: TComboBox
+      object cmbRandomDeviation: TComboBox
         Left = 84
         Top = 370
         Width = 102
         Height = 21
         TabOrder = 9
         Text = '4'
-        OnChange = CmBx_RND_devChange
+        OnChange = cmbRandomDeviationChange
         Items.Strings = (
           '0'
           '1'
@@ -1116,7 +1116,7 @@ object FormMain: TFormMain
           '8'
           '9')
       end
-      object Memo2: TMemo
+      object memoInstructions: TMemo
         Left = 0
         Top = 409
         Width = 867
@@ -1188,7 +1188,7 @@ object FormMain: TFormMain
             #1077#1090' '#1085#1072' '#1083#1080#1095#1085#1086#1084' '#1055#1050'.')
         TabOrder = 10
       end
-      object ChBx_period: TCheckBox
+      object chkUsePeriod: TCheckBox
         Left = 82
         Top = 144
         Width = 218
@@ -1198,10 +1198,10 @@ object FormMain: TFormMain
       end
     end
   end
-  object Timer1: TTimer
+  object tmrStatus: TTimer
     Enabled = False
     Interval = 333
-    OnTimer = Timer1Timer
+    OnTimer = tmrStatusTimer
     Left = 8
     Top = 8
   end

@@ -1,3 +1,30 @@
+{*
+  MIT License
+  Copyright (c) 2024 TextInjectToWindows contributors
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+  DISCLAIMER: This software is provided for informational and experimental
+  purposes only. Use it at your own risk and ensure compliance with applicable
+  laws and policies.
+*}
+
 unit UnitFunction;
 
 interface
@@ -24,8 +51,8 @@ uses
 procedure FillVisibleWindowsCombo(ACombo: TComboBox);
 function EnumVisibleWindowsProc(hWnd: HWND; lParam: LPARAM): BOOL; stdcall;
 
-function FindWindowByTitlePart(const ATitlePart: string): HWND; // поиск первого видимого окна, в заголовке которого есть ATitlePart
-function ActivateWindowByTitlePart(const ATitlePart: string): Boolean; // найти и сделать окно активным
+function FindWindowByTitlePart(const ATitlePart: string): HWND; // ГЇГ®ГЁГ±ГЄ ГЇГҐГ°ГўГ®ГЈГ® ГўГЁГ¤ГЁГ¬Г®ГЈГ® Г®ГЄГ­Г , Гў Г§Г ГЈГ®Г«Г®ГўГЄГҐ ГЄГ®ГІГ®Г°Г®ГЈГ® ГҐГ±ГІГј ATitlePart
+function ActivateWindowByTitlePart(const ATitlePart: string): Boolean; // Г­Г Г©ГІГЁ ГЁ Г±Г¤ГҐГ«Г ГІГј Г®ГЄГ­Г® Г ГЄГІГЁГўГ­Г»Г¬
 function ActivateWindowByHWIND(const H: HWND): Boolean;
 function EnumFindWindowByTitleProc(hWnd: HWND; lParam: LPARAM): BOOL; stdcall;
 procedure ProcessMemoWithCallback(Memo: TMemo; Callback: TCharCallback);
@@ -43,12 +70,12 @@ var
 begin
   Result := True;
 
-  // Только видимые верхнеуровневые окна
+  // Г’Г®Г«ГјГЄГ® ГўГЁГ¤ГЁГ¬Г»ГҐ ГўГҐГ°ГµГ­ГҐГіГ°Г®ГўГ­ГҐГўГ»ГҐ Г®ГЄГ­Г 
   Style := GetWindowLong(hWnd, GWL_STYLE);
   if (Style and WS_VISIBLE) = 0 then
     Exit;
 
-  // Заголовок есть?
+  // Г‡Г ГЈГ®Г«Г®ГўГ®ГЄ ГҐГ±ГІГј?
   Len := GetWindowTextLength(hWnd);
   if Len = 0 then
     Exit;
@@ -59,10 +86,10 @@ begin
   if Title = '' then
     Exit;
 
-  // if ContainsText(Title, 'Program Manager') then Exit; // Можно по желанию отфильтровать какие-то служебные окна
+  // if ContainsText(Title, 'Program Manager') then Exit; // ГЊГ®Г¦Г­Г® ГЇГ® Г¦ГҐГ«Г Г­ГЁГѕ Г®ГІГґГЁГ«ГјГІГ°Г®ГўГ ГІГј ГЄГ ГЄГЁГҐ-ГІГ® Г±Г«ГіГ¦ГҐГЎГ­Г»ГҐ Г®ГЄГ­Г 
 
   Combo := TComboBox(lParam);
-  Combo.Items.AddObject(Title, TObject(hWnd)); // заголовок текстом, HWND в Objects (можно этого не делать или переписать ф-цию поиска окна от HWND
+  Combo.Items.AddObject(Title, TObject(hWnd)); // Г§Г ГЈГ®Г«Г®ГўГ®ГЄ ГІГҐГЄГ±ГІГ®Г¬, HWND Гў Objects (Г¬Г®Г¦Г­Г® ГЅГІГ®ГЈГ® Г­ГҐ Г¤ГҐГ«Г ГІГј ГЁГ«ГЁ ГЇГҐГ°ГҐГЇГЁГ±Г ГІГј Гґ-Г¶ГЁГѕ ГЇГ®ГЁГ±ГЄГ  Г®ГЄГ­Г  Г®ГІ HWND
 end;
 
 procedure FillVisibleWindowsCombo(ACombo: TComboBox);
@@ -86,11 +113,11 @@ var
   Title: string;
   Data: PFindWindowData;
 begin
-  Result := True; // продолжать перечисление по умолчанию
+  Result := True; // ГЇГ°Г®Г¤Г®Г«Г¦Г ГІГј ГЇГҐГ°ГҐГ·ГЁГ±Г«ГҐГ­ГЁГҐ ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ
 
   Data := PFindWindowData(lParam);
 
-  Style := GetWindowLong(hWnd, GWL_STYLE);  // Только видимые окна (если надо скрытые — уберать эту проверку)
+  Style := GetWindowLong(hWnd, GWL_STYLE);  // Г’Г®Г«ГјГЄГ® ГўГЁГ¤ГЁГ¬Г»ГҐ Г®ГЄГ­Г  (ГҐГ±Г«ГЁ Г­Г Г¤Г® Г±ГЄГ°Г»ГІГ»ГҐ вЂ” ГіГЎГҐГ°Г ГІГј ГЅГІГі ГЇГ°Г®ГўГҐГ°ГЄГі)
   if (Style and WS_VISIBLE) = 0 then
     Exit;
 
@@ -104,7 +131,7 @@ begin
   if Title = '' then
     Exit;
 
-  if ContainsText(Title, Data^.Pattern) then   //  без учёта регистра
+  if ContainsText(Title, Data^.Pattern) then   //  ГЎГҐГ§ ГіГ·ВёГІГ  Г°ГҐГЈГЁГ±ГІГ°Г 
   begin
     Data^.Result := hWnd;
     Result := False;
@@ -163,7 +190,7 @@ begin
   ClickPoint := Point(-1, -1);
   StartTime := GetTickCount;
 
-  // Временно устанавливаем системный курсор в "ожидание"
+  // Г‚Г°ГҐГ¬ГҐГ­Г­Г® ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г±ГЁГ±ГІГҐГ¬Г­Г»Г© ГЄГіГ°Г±Г®Г° Гў "Г®Г¦ГЁГ¤Г Г­ГЁГҐ"
   Screen.Cursor := crHourGlass;
   try
     while (GetTickCount - StartTime) < Timeout do
@@ -206,17 +233,17 @@ var
   WasDown, IsDown: Boolean;
   P: TPoint;
 begin
-  // начальное состояние кнопки
+  // Г­Г Г·Г Г«ГјГ­Г®ГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ ГЄГ­Г®ГЇГЄГЁ
   WasDown := (GetAsyncKeyState(VK_LBUTTON) and $8000) <> 0;
 
   while True do
   begin
     IsDown := (GetAsyncKeyState(VK_LBUTTON) and $8000) <> 0;
 
-    // поймали момент "была отпущена -> стала нажата"
+    // ГЇГ®Г©Г¬Г Г«ГЁ Г¬Г®Г¬ГҐГ­ГІ "ГЎГ»Г«Г  Г®ГІГЇГіГ№ГҐГ­Г  -> Г±ГІГ Г«Г  Г­Г Г¦Г ГІГ "
     if IsDown and (not WasDown) then
     begin
-      GetCursorPos(P);  // координаты во ВСЕМ экране
+      GetCursorPos(P);  // ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГўГ® Г‚Г‘Г…ГЊ ГЅГЄГ°Г Г­ГҐ
       X := P.X;
       Y := P.Y;
       Exit;
@@ -224,8 +251,8 @@ begin
 
     WasDown := IsDown;
 
-    Sleep(10);                // чтобы не грузить CPU
-    Application.ProcessMessages; // не вешаем форму
+    Sleep(10);                // Г·ГІГ®ГЎГ» Г­ГҐ ГЈГ°ГіГ§ГЁГІГј CPU
+    Application.ProcessMessages; // Г­ГҐ ГўГҐГёГ ГҐГ¬ ГґГ®Г°Г¬Гі
   end;
 end;
 
@@ -237,7 +264,7 @@ begin
   Result := False;
   if not GetClientRect(hWnd, Client) then Exit;
 
-  // левый верхний угол клиентской области в координатах экрана
+  // Г«ГҐГўГ»Г© ГўГҐГ°ГµГ­ГЁГ© ГіГЈГ®Г« ГЄГ«ГЁГҐГ­ГІГ±ГЄГ®Г© Г®ГЎГ«Г Г±ГІГЁ Гў ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ Гµ ГЅГЄГ°Г Г­Г 
   TopLeft.X := Client.Left;
   TopLeft.Y := Client.Top;
   if not ClientToScreen(hWnd, TopLeft) then Exit;
