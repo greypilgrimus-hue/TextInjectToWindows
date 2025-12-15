@@ -22,8 +22,6 @@ object FormMain: TFormMain
     Height = 837
     Align = alLeft
     TabOrder = 0
-    ExplicitLeft = -2
-    ExplicitTop = -1
     object Label1: TLabel
       Left = 48
       Top = 93
@@ -192,7 +190,6 @@ object FormMain: TFormMain
       Width = 177
       Height = 21
       TabOrder = 8
-      Text = 'sergey.balayan@metinvestholding.com'
     end
     object EdtUserPass: TEdit
       Left = 10
@@ -200,7 +197,6 @@ object FormMain: TFormMain
       Width = 177
       Height = 21
       TabOrder = 9
-      Text = 'QAZ123wsx@@@@'
     end
     object BtnEnterUserName: TButton
       Left = 8
@@ -229,14 +225,8 @@ object FormMain: TFormMain
     ActivePage = TbSht_Settings
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 240
-    ExplicitTop = 217
-    ExplicitWidth = 289
-    ExplicitHeight = 193
     object TbSht_TextToRDP: TTabSheet
       Caption = #1090#1077#1082#1089' '#1074' '#1086#1082#1085#1086' RDP'
-      ExplicitWidth = 281
-      ExplicitHeight = 165
       object lblX: TLabel
         Left = 48
         Top = 412
@@ -851,8 +841,6 @@ object FormMain: TFormMain
     object TbSht_test: TTabSheet
       Caption = #1090#1077#1089#1090#1086#1074#1099#1077' '#1092#1091#1085#1082#1094#1080#1080
       ImageIndex = 1
-      ExplicitLeft = 5
-      ExplicitTop = 27
       object lblText: TLabel
         Left = 40
         Top = 43
@@ -904,8 +892,6 @@ object FormMain: TFormMain
       Margins.Bottom = 15
       Caption = #1085#1072#1089#1090#1088#1086#1081#1082#1080
       ImageIndex = 2
-      ExplicitLeft = 12
-      ExplicitTop = 27
       object Label2: TLabel
         Left = 82
         Top = 157
